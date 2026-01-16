@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/productsSlice";
-import { toast, Toaster } from "react-hot-toast"; // <-- import toast
+import { toast } from "react-hot-toast"; 
 
 export default function NewProduct() {
   const dispatch = useDispatch();
@@ -55,7 +55,6 @@ export default function NewProduct() {
 
   return (
     <div className="max-w-4xl w-full mx-auto bg-white p-10 rounded-2xl shadow-xl space-y-6 mt-16">
-      <Toaster position="top-right" reverseOrder={false} /> {/* <-- Ajouter le Toaster */}
 
       <h1 className="text-3xl font-bold text-violet-600 text-center">Add New Product</h1>
 

@@ -3,19 +3,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/productsSlice";
-import { Pencil, Trash2, Plus } from "lucide-react";
+import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Products() {
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
+  const router = useRouter();
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
 
   if (status === "loading") {
-    return <p className="text-violet-400 text-center align-item ">Loading products...</p>;
+    return (
+      <p className="text-violet-400 text-center align-item ">
+        Loading products...
+      </p>
+    );
   }
 
   return (
@@ -65,6 +71,9 @@ export default function Products() {
                 <tr
                   key={product.id}
                   className="border-t border-violet-100 hover:bg-violet-50 transition"
+                  onClick={() => {
+                    router.push(`/detailProduct/${product.id}`);
+                  }}
                 >
                   <td className="px-6 py-4 font-medium text-violet-600">
                     {product.name}
@@ -74,15 +83,26 @@ export default function Products() {
                     {product.category}
                   </td>
 
-                  <td className="px-6 py-4 text-gray-600">${product.price} DH</td>
+                  <td className="px-6 py-4 text-gray-600">
+                    ${product.price} DH
+                  </td>
 
                   <td className="px-6 py-4 text-gray-600">
                     {product.quantity}
                   </td>
 
                   <td className="px-6 py-4 flex justify-center gap-4">
+                    {/* view button */}
+                    <button className="text-gray-600 hover:text-gray-900">
+                      <Eye size={16} />
+                    </button>
                     {/* Edit button */}
-                    <button className="text-violet-700 hover:text-violet-900">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                      }}
+                      className="text-violet-700 hover:text-violet-900"
+                    >
                       <Pencil size={16} />
                     </button>
 
