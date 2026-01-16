@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 8000,
+      "quantity": 10,
+      "category": "Electronics"
+    },
+    {
+      "id": 2,
+      "name": "Smartphone",
+      "price": 5000,
+      "quantity": 25,
+      "category": "Electronics"
+    },
+    {
+      "id": 3,
+      "name": "Desk Chair",
+      "price": 1200,
+      "quantity": 15,
+      "category": "Furniture"
+    },
+    {
+      "id": 4,
+      "name": "Notebook",
+      "price": 50,
+      "quantity": 100,
+      "category": "Stationery"
+    },
+    {
+      "id": 5,
+      "name": "Headphones",
+      "price": 900,
+      "quantity": 30,
+      "category": "Electronics"
+    },
+    {
+      "id": 6,
+      "name": "Coffee Mug",
+      "price": 80,
+      "quantity": 60,
+      "category": "Kitchen"
+    },
+    {
+      "id": 7,
+      "name": "Backpack",
+      "price": 400,
+      "quantity": 40,
+      "category": "Accessories"
+    },
+    {
+      "id": 8,
+      "name": "Table Lamp",
+      "price": 300,
+      "quantity": 20,
+      "category": "Furniture"
+    }
+  ]
+}
