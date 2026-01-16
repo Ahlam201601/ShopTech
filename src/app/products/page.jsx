@@ -15,7 +15,7 @@ export default function Products() {
   }, [dispatch]);
 
   if (status === "loading") {
-    return <p className="text-violet-400">Loading products...</p>;
+    return <p className="text-violet-400 text-center align-item ">Loading products...</p>;
   }
 
   return (
@@ -37,10 +37,7 @@ export default function Products() {
       <input
         type="text"
         placeholder="Search product..."
-        className="w-full px-4 py-2 text-sm rounded-md 
-                   border border-violet-200
-                   focus:outline-none 
-                   focus:ring-2 focus:ring-violet-400"
+        className="w-full px-4 py-2 text-sm rounded-md border border-violet-200 focus:outline-none focus:ring-2 focus:ring-violet-400"
       />
 
       {/* Table */}
@@ -51,7 +48,7 @@ export default function Products() {
               <th className="px-6 py-3">Product Name</th>
               <th className="px-6 py-3">Category</th>
               <th className="px-6 py-3">Price</th>
-              <th className="px-6 py-3">Stock</th>
+              <th className="px-6 py-3">quantity</th>
               <th className="px-6 py-3 text-center">Actions</th>
             </tr>
           </thead>
@@ -77,7 +74,7 @@ export default function Products() {
                     {product.category}
                   </td>
 
-                  <td className="px-6 py-4 text-gray-600">${product.price}</td>
+                  <td className="px-6 py-4 text-gray-600">${product.price} DH</td>
 
                   <td className="px-6 py-4 text-gray-600">
                     {product.quantity}
