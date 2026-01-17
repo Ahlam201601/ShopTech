@@ -1,20 +1,20 @@
 {
   "products": [
     {
+      "id": "1",
       "name": "Laptop",
       "price": "9000",
-      "quantity": "20",
+      "quantity": "10",
       "category": "Electronics",
-      "description": "High-performance laptop suitable for work and gaming.",
-      "id": "1"
+      "description": "High-performance laptop suitable for work and gaming."
     },
     {
+      "id": "2",
       "name": "Smartphone",
       "price": "6000",
-      "quantity": "30",
+      "quantity": "20",
       "category": "Electronics",
-      "description": "Latest model smartphone with advanced camera and fast processor.",
-      "id": "2"
+      "description": "Latest model smartphone with advanced camera and fast processor."
     },
     {
       "id": "3",
@@ -24,7 +24,8 @@
       "category": "Furniture",
       "status": "available",
       "description": "Ergonomic desk chair with adjustable height and lumbar support.",
-      "createdAt": "2026-01-16T14:00:00Z"
+      "createdAt": "2026-01-16T14:00:00Z",
+      "sold": 0
     },
     {
       "id": "5",
@@ -34,7 +35,8 @@
       "category": "Electronics",
       "status": "available",
       "description": "Over-ear headphones with noise cancellation and premium sound.",
-      "createdAt": "2026-01-16T14:00:00Z"
+      "createdAt": "2026-01-16T14:00:00Z",
+      "sold": 2
     },
     {
       "name": "Smartwatch",
@@ -42,7 +44,8 @@
       "quantity": "40",
       "category": "Electronics",
       "description": "Smartwatch with heart rate monitoring, notifications, and fitness tracking.",
-      "id": "9213"
+      "id": "9213",
+      "sold": 5
     }
   ]
 }
