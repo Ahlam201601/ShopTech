@@ -7,6 +7,7 @@ import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import PopupDelete from "../components/PopupDelete";
+import EditProduct from "../components/EditProduct";
 
 export default function Products() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
@@ -133,7 +136,11 @@ export default function Products() {
 
                     {/* Edit button */}
                     <button
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedProduct(product); 
+                        setShowEdit(true); 
+                      }}
                       className="text-violet-700 hover:text-violet-900"
                     >
                       <Pencil size={16} />
@@ -161,6 +168,17 @@ export default function Products() {
           <PopupDelete
             onConfirm={confirmDelete}
             onCancel={() => setShowDelete(false)}
+          />
+        )}
+
+        {/* Popup Edit Product */}
+        {showEdit && selectedProduct && (
+          <EditProduct
+            product={selectedProduct}
+            onClose={() => {
+              setShowEdit(false);
+              setSelectedProduct(null);
+            }}
           />
         )}
       </div>

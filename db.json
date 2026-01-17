@@ -37,14 +37,12 @@
       "createdAt": "2026-01-16T14:00:00Z"
     },
     {
-      "id": "9213",
       "name": "Smartwatch",
       "price": 500,
-      "quantity": 30,
+      "quantity": "40",
       "category": "Electronics",
-      "status": "available",
       "description": "Smartwatch with heart rate monitoring, notifications, and fitness tracking.",
-      "createdAt": "2026-01-16T14:40:55.201Z"
+      "id": "9213"
     }
   ]
 }
