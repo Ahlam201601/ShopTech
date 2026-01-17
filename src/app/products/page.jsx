@@ -1,21 +1,34 @@
 "use client";
 
-import { useEffect  } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/productsSlice";
 import { Eye, Pencil, Trash2, Plus } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { deleteProduct } from "../redux/productsSlice";
+import PopupDelete from "../components/PopupDelete";
 
 export default function Products() {
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
   const router = useRouter();
-  // const [open , setOpen]= useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+
+  const handleDelete = (id) => {
+    setSelectedId(id);
+    setShowDelete(true);
+  };
+
+  const confirmDelete = () => {
+    dispatch(deleteProduct(selectedId));
+    setShowDelete(false);
+  };
 
   if (status === "loading") {
     return (
@@ -100,7 +113,7 @@ export default function Products() {
                     {/* Edit button */}
                     <button
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
                       }}
                       className="text-violet-700 hover:text-violet-900"
                     >
@@ -108,9 +121,10 @@ export default function Products() {
                     </button>
 
                     {/* Delete button */}
-                    <button 
+                    <button
                       onClick={(e) => {
-                        e.stopPropagation(); 
+                        e.stopPropagation();
+                        handleDelete(product.id);
                       }}
                       className="text-red-500 hover:text-red-700"
                     >
@@ -122,6 +136,12 @@ export default function Products() {
             )}
           </tbody>
         </table>
+        {showDelete && (
+          <PopupDelete
+            onConfirm={confirmDelete}
+            onCancel={() => setShowDelete(false)}
+          />
+        )}
       </div>
     </div>
   );

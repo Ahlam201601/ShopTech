@@ -17,14 +17,12 @@ export default function DetailProduct() {
   const { id } = useParams();
   const router = useRouter();
   const [showDelete, setShowDelete] = useState(false);
-  const [deleteProductId, setDeleteProductId] = useState(null);
   const product = useSelector((state) =>
     state.products.items.find((item) => item.id == id)
   );
 
   const dispatch = useDispatch();
   const handleDelete = () => {
-    setDeleteProductId(id);
     setShowDelete(true);
   };
 
