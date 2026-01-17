@@ -12,11 +12,13 @@ import {
 import { useState } from "react";
 import PopupDelete from "@/app/components/PopupDelete";
 import { deleteProduct } from "@/app/redux/productsSlice";
+import EditProduct from "@/app/components/EditProduct";
 
 export default function DetailProduct() {
   const { id } = useParams();
   const router = useRouter();
   const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const product = useSelector((state) =>
     state.products.items.find((item) => item.id == id)
   );
@@ -25,6 +27,11 @@ export default function DetailProduct() {
   const handleDelete = () => {
     setShowDelete(true);
   };
+
+  const handleEdit = () => {
+    setShowEdit(true);
+  }
+    
 
   const confirmDelete = () => {
     dispatch(deleteProduct(id));
@@ -40,9 +47,7 @@ export default function DetailProduct() {
     );
   }
 
-  const handleEdit = () => {
-    router.push(`/products/edit/${id}`);
-  };
+  
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6 mt-30">
@@ -139,6 +144,14 @@ export default function DetailProduct() {
         <PopupDelete
           onConfirm={confirmDelete}
           onCancel={() => setShowDelete(false)}
+        />
+      )}
+
+      {/* Popup Edit Product */}
+      {showEdit && (
+        <EditProduct
+          product={product}
+          onClose={() => setShowEdit(false)}
         />
       )}
     </div>

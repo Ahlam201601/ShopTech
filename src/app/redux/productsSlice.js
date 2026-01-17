@@ -25,6 +25,15 @@ export const addProduct = createAsyncThunk(
   }
 );
 
+//update Product
+export const updateProduct = createAsyncThunk(
+  "products/updateProduct",
+  async ({ id, data }) => {
+    const response = await axios.put(`http://localhost:3001/products/${id}`, data);
+    return response.data; // retourne le produit mis à jour
+  }
+);
+
 // Delete
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
@@ -76,6 +85,10 @@ const productsSlice = createSlice({
         state.items = state.items.filter(
           (item) => item.id !== action.payload
         );
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        const index = state.items.findIndex((p) => p.id === action.payload.id);
+        if (index !== -1) state.items[index] = action.payload;
       });
   },
 });

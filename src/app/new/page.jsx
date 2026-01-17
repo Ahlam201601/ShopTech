@@ -73,7 +73,7 @@ export default function NewProduct() {
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         {/* Header */}
         <div className="px-6 py-4 border-b border-gray-100">
-          <h1 className="text-xl font-semibold text-gray-900">Add New Product</h1>
+          <h1 className="text-xl font-semibold text-violet-600 text-center">Add New Product</h1>
         </div>
 
         {/* Form */}

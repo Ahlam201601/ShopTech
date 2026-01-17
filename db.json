@@ -1,24 +1,20 @@
 {
   "products": [
     {
-      "id": "1",
       "name": "Laptop",
-      "price": 8000,
-      "quantity": 10,
+      "price": "9000",
+      "quantity": "20",
       "category": "Electronics",
-      "status": "available",
       "description": "High-performance laptop suitable for work and gaming.",
-      "createdAt": "2026-01-16T14:00:00Z"
+      "id": "1"
     },
     {
-      "id": "2",
       "name": "Smartphone",
-      "price": 5000,
-      "quantity": 0,
+      "price": "6000",
+      "quantity": "30",
       "category": "Electronics",
-      "status": "sold",
       "description": "Latest model smartphone with advanced camera and fast processor.",
-      "createdAt": "2026-01-16T14:00:00Z"
+      "id": "2"
     },
     {
       "id": "3",
