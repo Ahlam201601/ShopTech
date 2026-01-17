@@ -25,12 +25,21 @@ export const addProduct = createAsyncThunk(
   }
 );
 
+// Delete
+export const deleteProduct = createAsyncThunk(
+  "products/deleteProduct",
+  async (id) => {
+    await axios.delete(`http://localhost:3001/products/${id}`);
+    return id;
+  }
+);
+
 //  SLICE
 const productsSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
-    status: "idle", 
+    status: "idle",
     error: null,
   },
   reducers: {},
@@ -60,6 +69,13 @@ const productsSlice = createSlice({
       .addCase(addProduct.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      })
+
+      /*------ Delete ------*/
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload
+        );
       });
   },
 });

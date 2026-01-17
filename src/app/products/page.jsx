@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../redux/productsSlice";
 import { Eye, Pencil, Trash2, Plus } from "lucide-react";
@@ -11,6 +11,7 @@ export default function Products() {
   const dispatch = useDispatch();
   const { items, status } = useSelector((state) => state.products);
   const router = useRouter();
+  // const [open , setOpen]= useState(false);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -25,7 +26,7 @@ export default function Products() {
   }
 
   return (
-    <div className="space-y-6 bg-white p-6 rounded-xl shadow">
+    <div className="space-y-6 bg-white p-6 rounded-xl shadow mt-15">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-semibold text-violet-600">Product List</h1>
@@ -84,7 +85,7 @@ export default function Products() {
                   </td>
 
                   <td className="px-6 py-4 text-gray-600">
-                    ${product.price} DH
+                    {product.price} DH
                   </td>
 
                   <td className="px-6 py-4 text-gray-600">
@@ -107,7 +108,12 @@ export default function Products() {
                     </button>
 
                     {/* Delete button */}
-                    <button className="text-red-500 hover:text-red-700">
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation(); 
+                      }}
+                      className="text-red-500 hover:text-red-700"
+                    >
                       <Trash2 size={16} />
                     </button>
                   </td>

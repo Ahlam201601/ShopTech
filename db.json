@@ -31,16 +31,6 @@
       "createdAt": "2026-01-16T14:00:00Z"
     },
     {
-      "id": "4",
-      "name": "Notebook",
-      "price": 50,
-      "quantity": 0,
-      "category": "Stationery",
-      "status": "sold",
-      "description": "Classic ruled notebook for school or office use.",
-      "createdAt": "2026-01-16T14:00:00Z"
-    },
-    {
       "id": "5",
       "name": "Headphones",
       "price": 900,

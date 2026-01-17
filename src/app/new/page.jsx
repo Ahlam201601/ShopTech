@@ -3,10 +3,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../redux/productsSlice";
-import { toast } from "react-hot-toast"; 
+import { toast } from "react-hot-toast";
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function NewProduct() {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -29,6 +32,7 @@ export default function NewProduct() {
     if (!formData.price || formData.price <= 0) err.price = "Price must be greater than 0";
     if (formData.quantity === "" || formData.quantity < 0) err.quantity = "Quantity must be 0 or more";
     if (!formData.category) err.category = "Category is required";
+    if (!formData.description) err.description = "description is required";
     setErrors(err);
     return Object.keys(err).length === 0;
   };
@@ -48,96 +52,118 @@ export default function NewProduct() {
 
     dispatch(addProduct(product));
     setFormData({ name: "", price: "", quantity: "", category: "", description: "" });
-
-    // Afficher le toast de succès
     toast.success("Product added successfully!");
+    router.push("/products");
   };
 
   return (
-    <div className="max-w-4xl w-full mx-auto bg-white p-10 rounded-2xl shadow-xl space-y-6 mt-16">
-
-      <h1 className="text-3xl font-bold text-violet-600 text-center">Add New Product</h1>
-
-      {/* Name */}
-      <div className="space-y-1">
-        <label className="text-gray-700 font-medium">Product Name</label>
-        <input
-          name="name"
-          placeholder="Enter product name"
-          value={formData.name}
-          onChange={handleChange}
-          className="w-full px-5 py-3 rounded-xl border border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-400 text-lg shadow-sm"
-        />
-        {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
-      </div>
-
-      {/* Price & Quantity */}
-      <div className="flex gap-6">
-        <div className="flex-1 space-y-1">
-          <label className="text-gray-700 font-medium">Price (DH)</label>
-          <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            value={formData.price}
-            onChange={handleChange}
-            className="w-full px-5 py-3 rounded-xl border border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-400 text-lg shadow-sm"
-          />
-          {errors.price && <p className="text-red-500 text-sm">{errors.price}</p>}
-        </div>
-        <div className="flex-1 space-y-1">
-          <label className="text-gray-700 font-medium">Quantity</label>
-          <input
-            type="number"
-            name="quantity"
-            placeholder="Quantity"
-            value={formData.quantity}
-            onChange={handleChange}
-            className="w-full px-5 py-3 rounded-xl border border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-400 text-lg shadow-sm"
-          />
-          {errors.quantity && <p className="text-red-500 text-sm">{errors.quantity}</p>}
-        </div>
-      </div>
-
-      {/* Category */}
-      <div className="space-y-1">
-        <label className="text-gray-700 font-medium">Category</label>
-        <select
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          className="w-full px-5 py-3 rounded-xl border border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-400 text-lg shadow-sm bg-white"
+    <div className="max-w-3xl mx-auto space-y-4 mt-30">
+      {/* Header with Back button */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={() => router.back()}
+          className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors"
         >
-          <option value="">Select category</option>
-          <option>Electronics</option>
-          <option>Furniture</option>
-          <option>Stationery</option>
-          <option>Peripherals</option>
-          <option>Storage</option>
-        </select>
-        {errors.category && <p className="text-red-500 text-sm">{errors.category}</p>}
+          <ArrowLeft size={20} />
+          <span className="font-medium">Back</span>
+        </button>
       </div>
 
-      {/* Description */}
-      <div className="space-y-1">
-        <label className="text-gray-700 font-medium">Description</label>
-        <textarea
-          name="description"
-          placeholder="Enter product description"
-          value={formData.description}
-          onChange={handleChange}
-          rows={3}
-          className="w-full px-5 py-3 rounded-xl border border-violet-300 focus:outline-none focus:ring-2 focus:ring-violet-400 text-lg shadow-sm resize-none"
-        />
-      </div>
+      {/* Form Card */}
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-gray-100">
+          <h1 className="text-xl font-semibold text-gray-900">Add New Product</h1>
+        </div>
 
-      {/* Button */}
-      <button
-        onClick={handleAddProduct}
-        className="w-full bg-violet-600 hover:bg-violet-700 text-white py-4 rounded-2xl text-lg font-semibold shadow-md transition transform hover:scale-105"
-      >
-        Add Product
-      </button>
+        {/* Form */}
+        <div className="p-6 space-y-4">
+          {/* Name */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-gray-700">Product Name</label>
+            <input
+              name="name"
+              placeholder="Enter product name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
+            />
+            {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+          </div>
+
+          {/* Price & Quantity */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium text-gray-700">Price (DH)</label>
+              <input
+                type="number"
+                name="price"
+                placeholder="0.00"
+                value={formData.price}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
+              />
+              {errors.price && <p className="text-red-500 text-xs">{errors.price}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-sm font-medium text-gray-700">Quantity</label>
+              <input
+                type="number"
+                name="quantity"
+                placeholder="0"
+                value={formData.quantity}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
+              />
+              {errors.quantity && <p className="text-red-500 text-xs">{errors.quantity}</p>}
+            </div>
+          </div>
+
+          {/* Category */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-gray-700">Category</label>
+            <select
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all bg-white"
+            >
+              <option value="">Select category</option>
+              <option>Electronics</option>
+              <option>Furniture</option>
+              <option>Stationery</option>
+              <option>Peripherals</option>
+              <option>Storage</option>
+            </select>
+            {errors.category && <p className="text-red-500 text-xs">{errors.category}</p>}
+          </div>
+
+          {/* Description */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-gray-700">Description</label>
+            <textarea
+              name="description"
+              placeholder="Enter product description (optional)"
+              value={formData.description}
+              onChange={handleChange}
+              rows={3}
+              className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all resize-none"
+            />
+            {errors.description && <p className="text-red-500 text-xs">{errors.description}</p>}
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-3 pt-2">
+            
+            <button
+              onClick={handleAddProduct}
+              className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-violet-600 rounded-lg hover:bg-violet-700 transition-colors"
+            >
+              Add Product
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
