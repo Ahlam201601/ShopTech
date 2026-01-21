@@ -51,7 +51,7 @@ export default function Products() {
   );
 
   return (
-    <div className="space-y-6 bg-white p-6 rounded-xl shadow mt-10">
+    <div className="space-y-6 bg-white p-6 rounded-xl shadow mt-10 ml-64">
       {/* Header */}
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-semibold text-violet-600">Product List</h1>

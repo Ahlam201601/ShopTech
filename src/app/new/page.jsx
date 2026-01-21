@@ -57,7 +57,7 @@ export default function NewProduct() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-4 mt-30">
+    <div className="max-w-3xl mx-auto space-y-4 mt-30 ">
       {/* Header with Back button */}
       <div className="flex items-center gap-3">
         <button

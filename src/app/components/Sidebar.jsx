@@ -17,7 +17,7 @@ export default function Sidebar() {
      }`;
 
   return (
-    <aside className="w-64 h-screen bg-gray-900 p-6">
+    <aside className="fixed top-0 left-0 w-56 h-screen bg-gray-900 p-6">
       
       {/* Logo */}
       <div className="flex items-center gap-2 mb-10">
