@@ -5,47 +5,70 @@
       "name": "Laptop",
       "price": "9000",
       "quantity": "10",
-      "category": "Electronics",
-      "description": "High-performance laptop suitable for work and gaming."
+      "category": "Computers",
+      "description": "High-performance laptop suitable for work and gaming.",
+      "sold": 1,
+      "createdAt": "2026-01-10T10:00:00Z"
     },
     {
       "id": "2",
       "name": "Smartphone",
       "price": "6000",
       "quantity": "20",
-      "category": "Electronics",
-      "description": "Latest model smartphone with advanced camera and fast processor."
+      "category": "Mobile Devices",
+      "description": "Latest model smartphone with advanced camera and fast processor.",
+      "sold": 0,
+      "createdAt": "2026-01-11T09:30:00Z"
     },
     {
       "id": "3",
       "name": "Desk Chair",
       "price": 1200,
       "quantity": 15,
-      "category": "Furniture",
-      "status": "available",
+      "category": "Accessories",
       "description": "Ergonomic desk chair with adjustable height and lumbar support.",
-      "createdAt": "2026-01-16T14:00:00Z",
-      "sold": 0
+      "sold": 3,
+      "createdAt": "2026-01-12T14:00:00Z"
     },
     {
-      "id": "5",
+      "id": "4",
       "name": "Headphones",
       "price": 900,
       "quantity": 30,
-      "category": "Electronics",
-      "status": "available",
+      "category": "Audio",
       "description": "Over-ear headphones with noise cancellation and premium sound.",
-      "createdAt": "2026-01-16T14:00:00Z",
-      "sold": 2
+      "sold": 2,
+      "createdAt": "2026-01-13T11:15:00Z"
     },
     {
+      "id": "5",
       "name": "Smartwatch",
       "price": 500,
       "quantity": "40",
-      "category": "Electronics",
+      "category": "Wearables",
       "description": "Smartwatch with heart rate monitoring, notifications, and fitness tracking.",
-      "id": "9213",
-      "sold": 5
+      "sold": 0,
+      "createdAt": "2026-01-14T16:45:00Z"
+    },
+    {
+      "id": "6",
+      "name": "Tablet",
+      "price": 3500,
+      "quantity": 15,
+      "category": "Mobile Devices",
+      "description": "Portable tablet for work and entertainment.",
+      "sold": 3,
+      "createdAt": "2026-01-15T13:20:00Z"
+    },
+    {
+      "id": "7",
+      "name": "USB-C Hub",
+      "price": 300,
+      "quantity": 50,
+      "category": "Accessories",
+      "description": "Multi-port hub for laptops and tablets.",
+      "sold": 0,
+      "createdAt": "2026-01-16T08:00:00Z"
     }
   ]
 }
