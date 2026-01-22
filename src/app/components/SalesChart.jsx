@@ -29,7 +29,7 @@ export default function SalesChart({ products }) {
       {
         label: "Produits vendus",
         data: Object.values(salesByCategory),
-        backgroundColor: "#4f46e5",
+        backgroundColor: "#7C3AED",
         borderRadius: 4,
       },
     ],
@@ -45,13 +45,13 @@ export default function SalesChart({ products }) {
       title: {
         display: true,
         text: "Ventes par catégorie",
-        font: { size: 14, weight: 'bold' },
+        font: { size: 13, weight: 'bold' },
         color: '#374151',
         padding: {
-          top: 5,
-          bottom: 15
+          top: 0,
+          bottom: 10
         },
-        align: 'start' // Alignement du titre à gauche
+        align: 'start'
       },
       tooltip: {
         backgroundColor: '#1f2937',
@@ -70,33 +70,35 @@ export default function SalesChart({ products }) {
           display: false
         },
         ticks: {
-          font: { size: 11 },
+          font: { size: 10 },
           color: '#6b7280',
-          padding: 5, // Réduit l'espace autour des labels
+          padding: 2,
+          maxRotation: 0,
         },
         border: {
           color: '#e5e7eb'
         },
-        // Réduire l'espace entre les catégories
-        barPercentage: 0.5,
-        categoryPercentage: 0.6,
+        // Réduire drastiquement l'espace entre les barres
+        barPercentage: 0.3,
+        categoryPercentage: 0.4,
       },
       y: {
         beginAtZero: true,
         grid: {
-          color: '#f3f4f6'
+          color: '#f3f4f6',
+          drawBorder: false,
         },
         ticks: {
-          font: { size: 10 },
+          font: { size: 9 },
           color: '#6b7280',
           callback: function(value) {
             return value.toLocaleString();
           },
-          padding: 3,
+          padding: 2,
+          count: 4, // Réduire le nombre de ticks sur l'axe Y
         },
         border: {
-          color: '#e5e7eb',
-          dash: [4, 4]
+          display: false
         }
       }
     },
@@ -104,27 +106,27 @@ export default function SalesChart({ products }) {
       bar: {
         borderWidth: 0,
         borderSkipped: false,
-        barThickness: 16, // Barres plus fines
+        barThickness: 12, // Barres encore plus fines
       }
     },
     layout: {
       padding: {
-        left: 5,  // Très peu d'espace à gauche
-        right: 25, // Plus d'espace à droite
-        top: 5,
-        bottom: 5
+        left: 0,  // Supprimer l'espace à gauche
+        right: 5, // Réduire l'espace à droite
+        top: 0,
+        bottom: 0
       }
     }
   };
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-3 border border-gray-100">
-      <div style={{ height: "180px" }}> {/* Hauteur réduite */}
+      <div style={{ height: "160px" }}> {/* Hauteur encore réduite */}
         <Bar data={data} options={options} />
       </div>
-      <div className="flex justify-start items-center mt-3 space-x-4">
+      <div className="flex justify-start items-center mt-2 space-x-3">
         <div className="flex items-center">
-          <div className="w-3 h-3 rounded bg-violet-600 mr-2"></div>
+          <div className="w-2 h-2 rounded bg-violet-600 mr-1"></div>
           <span className="text-xs text-gray-600">Ventes par catégorie</span>
         </div>
         <div className="text-xs text-gray-500">

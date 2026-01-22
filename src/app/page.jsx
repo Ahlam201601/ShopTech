@@ -6,6 +6,7 @@ import { Package, DollarSign, TrendingUp, ShoppingCart } from "lucide-react";
 import { getProducts } from "./redux/productsSlice";
 import SalesChart from "./components/SalesChart";
 import SoldProductsTable from "./components/SoldProductsTable";
+import AIComponent from "./components/AIComponent";
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -92,11 +93,17 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      
+
       <div className="mt-10 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
         <SalesChart products={items} />
       </div>
-      
+      <AIComponent
+        totalStock={totalStock}
+        totalStockValue={totalStockValue}
+        totalSold={totalSold}
+        totalSalesValue={totalSalesValue}
+      />
+
       <SoldProductsTable products={items} />
     </div>
   );
